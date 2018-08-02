@@ -71,6 +71,7 @@ export default class BashServer {
     connection.onReferences(this.onReferences.bind(this))
     connection.onCompletion(this.onCompletion.bind(this))
     connection.onCompletionResolve(this.onCompletionResolve.bind(this))
+    connection.onFoldingRanges(this.onFoldingRanges.bind(this))
   }
 
   /**
@@ -89,6 +90,7 @@ export default class BashServer {
       definitionProvider: true,
       documentSymbolProvider: true,
       referencesProvider: true,
+      foldingRangeProvider: true,
     }
   }
 
@@ -160,6 +162,11 @@ export default class BashServer {
 
   private onDocumentSymbol(params: LSP.DocumentSymbolParams): LSP.SymbolInformation[] {
     return this.analyzer.findSymbols(params.textDocument.uri)
+  }
+
+  private onFoldingRanges(params: LSP.FoldingRangeRequestParam): LSP.FoldingRange[] {
+    this.connection.console.log('Folding ranges!')
+    return this.analyzer.foldLocations(params.textDocument.uri)
   }
 
   private onDocumentHighlight(

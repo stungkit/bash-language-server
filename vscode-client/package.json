@@ -32,8 +32,7 @@
         "bashIde.highlightParsingErrors": {
           "type": "boolean",
           "default": true,
-          "description":
-            "If enabled parsing errors will be highlighted as 'problems' "
+          "description": "If enabled parsing errors will be highlighted as 'problems' "
         },
         "bashIde.explainshellEndpoint": {
           "type": "string",
@@ -55,6 +54,6 @@
     "@types/semver-compare": "^1.0.0",
     "semver-compare": "^1.0.0",
     "vscode": "^1.1.14",
-    "vscode-languageclient": "^4.1.3"
+    "vscode-languageclient": "^4.4.0"
   }
 }
